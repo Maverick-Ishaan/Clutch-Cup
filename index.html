@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valorant Clutch Cup 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0F172A; color: #F8FAFC; }
+    .font-teko { font-family: 'Teko', sans-serif; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body class="p-4 md:p-8 max-w-6xl mx-auto">
+
+  <!-- HEADER -->
+  <header class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
+    <div>
+      <h1 class="text-4xl font-teko uppercase text-red-500 tracking-wider">Valorant Clutch Cup</h1>
+      <p class="text-slate-400 text-sm">Nov 15 - 18 • Official Standings & Match Tracker</p>
+    </div>
+    <button onclick="toggleAdmin()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-2 rounded font-semibold border border-slate-700">
+      🔒 Admin Portal
+    </button>
+  </header>
+
+  <!-- ADMIN INPUT PANEL (Hidden by default) -->
+  <div id="adminPanel" class="hidden bg-slate-800 border border-red-500/30 p-6 rounded-lg mb-8">
+    <h2 class="text-xl font-bold text-red-400 mb-4 font-teko text-2xl uppercase">Update Match Score</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">Group</label>
+        <select id="adminGroup" onchange="loadGroupMatches()" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-sm text-white">
+          <option value="A">Group A</option>
+          <option value="B">Group B</option>
+          <option value="C">Group C</option>
+          <option value="D">Group D</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">Match</label>
+        <select id="adminMatchSelect" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-sm text-white"></select>
+      </div>
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">Scores (Team 1 - Team 2)</label>
+        <div class="flex gap-2">
+          <input type="number" id="score1" placeholder="0" min="0" class="w-1/2 bg-slate-900 border border-slate-700 p-2 rounded text-center text-white">
+          <input type="number" id="score2" placeholder="0" min="0" class="w-1/2 bg-slate-900 border border-slate-700 p-2 rounded text-center text-white">
+        </div>
+      </div>
+      <div class="flex items-end">
+        <button onclick="saveScore()" class="w-full bg-red-600 hover:bg-red-500 font-bold p-2 rounded text-sm text-white uppercase">Save Score</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STANDINGS GRID -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-teko uppercase text-white mb-4">Group Standings</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="standingsContainer"></div>
+  </section>
+
+  <!-- MATCH SCHEDULE -->
+  <section>
+    <h2 class="text-2xl font-teko uppercase text-white mb-4">Match Schedule & Results</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="matchesContainer"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
